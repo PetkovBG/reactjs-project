@@ -1,6 +1,8 @@
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
 import { Login } from "./components/Login/Login";
+import { Catalog } from "./components/Properties/Catalog";
+import { Register } from "./components/Register/Register";
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
       <Header />
     <main>
       <Login />
+      <Register />
+      <Catalog />
     </main>
       <Footer />
     </div>
