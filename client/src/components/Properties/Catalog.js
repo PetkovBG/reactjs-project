@@ -11,7 +11,7 @@ export const Catalog = () => {
       <p className={styles.type}>Type: Two bedroom apartment</p>
       <p className={styles.price}>$1,000,000</p>
       <p className={styles.location}>New York, NY</p>
-      <button className={styles.detailsBtn}>Details</button>
+      <button className={styles.details}>Details</button>
     </div>
   </div>
   <div className={styles.card}>
@@ -21,7 +21,7 @@ export const Catalog = () => {
       <p className={styles.type}>Type: Three bedroom house</p>
       <p className={styles.price}>$800,000</p>
       <p className={styles.location}>Los Angeles, CA</p>
-      <button className={styles.detailsBtn}>Details</button>
+      <button className={styles.details}>Details</button>
     </div>
   </div>
   <div className={styles.card}>
@@ -31,7 +31,7 @@ export const Catalog = () => {
       <p className={styles.type}>Type: Studio apartment</p>
       <p className={styles.price}>$500,000</p>
       <p className={styles.location}>Chicago, IL</p>
-      <button className={styles.detailsBtn}>Details</button>
+      <button className={styles.details}>Details</button>
     </div>
   </div>
   <div className={styles.card}>
@@ -41,7 +41,7 @@ export const Catalog = () => {
       <p className={styles.type}>Type: Two bedroom apartment</p>
       <p className={styles.price}>$1,000,000</p>
       <p className={styles.location}>New York, NY</p>
-      <button className={styles.detailsBtn}>Details</button>
+      <button className={styles.details}>Details</button>
     </div>
   </div>
 </section>

@@ -13,7 +13,7 @@
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
     display: inline-block;
     margin: 10px;
-    width: calc(33.33% - 20px);
+    width: calc(25% - 20px); /* decrease width */
   }
   
   .card img {
@@ -56,9 +56,12 @@
     font-size: 1em;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-transform: uppercase; /* make text uppercase */
+    letter-spacing: 1px; /* add letter spacing */
   }
   
   .card button.details:hover {
     background-color: #006400;
+    transform: scale(1.05); /* add a slight scaling effect on hover */
   }
   
