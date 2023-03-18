@@ -15,6 +15,9 @@ export const CreateProperty = () => {
             <option value="apartment">Apartment</option>
             <option value="condo">Condo</option>
           </select>
+
+          <label htmlFor="size">Square Meters:</label>
+          <input type="text" id="size" name="size" />
           
           <label htmlFor="price">Price:</label>
           <input type="text" id="price" name="price" />
