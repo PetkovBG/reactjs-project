@@ -5,7 +5,7 @@
   }
   
   .background-image {
-    background-image: url('https://example.com/background.jpg');
+    background-image: url('https://www.tripsavvy.com/thmb/LEq1BH226U9j0A_GFn957QMYkdI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/south-beach-miami-from-south-pointe-park--florida--usa-1137673992-cab605dc50664458b8cd538fa93e23ea.jpg');
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -18,17 +18,35 @@
     color: #fff;
   }
   
-  h1 {
+  .heading {
     font-size: 4rem;
     margin-bottom: 2rem;
+    background-color: rgba(0, 0, 0, 0.5); /* add a semi-transparent black background */
+    padding: 1rem; /* add some padding to the text */
+    display: inline-block; /* make the background only cover the text */
+    border-radius: 0.5rem; /* add some border radius */
   }
   
-  p {
+  .subheading {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    background-color: rgba(0, 0, 0, 0.5); /* add a semi-transparent black background */
+    padding: 0.5rem; /* add some padding to the text */
+    display: inline-block; /* make the background only cover the text */
+    border-radius: 0.5rem; /* add some border radius */
+  }
+  
+  .info {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5); /* add a semi-transparent black background */
+
   }
   
-  button {
+  
+  .button {
     background-color: #fff;
     color: #000;
     font-size: 1.5rem;
@@ -39,7 +57,7 @@
     transition: all 0.3s ease;
   }
   
-  button:hover {
+  .button:hover {
     background-color: #000;
     color: #fff;
   }
