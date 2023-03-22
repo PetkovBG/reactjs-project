@@ -23,7 +23,8 @@ export const Catalog = ({
     </div>
   </div> */}
 
-  
+  {properties.length === 0 &&
+  <h3>There are no properties listed as of now. Please come back later!</h3>}
 
 </section>
 

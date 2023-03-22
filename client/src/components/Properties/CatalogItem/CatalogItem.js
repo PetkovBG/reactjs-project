@@ -1,5 +1,6 @@
 import styles from '../Catalog.module.css'
 
+import { Link } from 'react-router-dom';
 
 export const CatalogItem = ({
     _id,
@@ -18,7 +19,8 @@ export const CatalogItem = ({
           <p className={styles.type}>Type: {Type}</p>
           <p className={styles.price}>${price}</p>
           <p className={styles.location}>{location}</p>
-          <button className={styles.details}>Details</button>
+          <Link to={`/catalog/${_id}`} className={styles.details}>Details</Link>
+          {/* <button className={styles.details}>Details</button> */}
         </div>
       </div>
     );
