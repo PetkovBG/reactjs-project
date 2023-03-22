@@ -4,12 +4,12 @@ export const PropertyDetails = () => {
 
 return (
     <div className="real-estate-details">
-    <h1>{props.name}</h1>
-    <p>Type: {props.type}</p>
-    <p>Size: {props.size}</p>
-    <p>Price: {props.price}</p>
-    <p>Location: {props.location}</p>
-    <p>Description: {props.description}</p>
+    <h1>New York</h1>
+    <p>Type: </p>
+    <p>Size: </p>
+    <p>Price: </p>
+    <p>Location: </p>
+    <p>Description: </p>
 
     <h2>Comments</h2>
     {/* <ul>

@@ -11,6 +11,7 @@ import { Home } from './components/Home/Home';
 import { Login } from "./components/Login/Login";
 import { Catalog } from "./components/Properties/Catalog";
 import { Register } from "./components/Register/Register";
+import { PropertyDetails } from './components/PropertyDetails/PropertyDetails';
 
 function App() {
 
@@ -34,6 +35,7 @@ useEffect(() => {
         <Route path="/login" element={ <Login />} />
         <Route path="/register" element={ <Register />} />
         <Route path="/catalog" element={     <Catalog properties={properties} />} />
+        <Route path="/catalog/:propertyId" element={ <PropertyDetails /> } />
         <Route path="/create-property" element={ <CreateProperty />} />
       </Routes>
     </main>
