@@ -5,7 +5,7 @@ export const Footer = () => {
 return(
 
 <footer className={styles.footer}>
-  <div class="container">
+  <div className="container">
     <p>Copyright © 2023</p>
     <nav>
       <ul>
