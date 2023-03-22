@@ -1,15 +1,34 @@
 import styles from './PropertyDetails.module.css'
 
+import * as propertyService from '../../services/propertyService';
+
+import {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
+
+
 export const PropertyDetails = () => {
+
+    const [property, setProperty] = useState({});
+
+    const {propertyId} = useParams();
+
+    useEffect(() => {
+        propertyService.getOne(propertyId)
+        .then(result => {
+            console.log(result);
+            setProperty(result);
+        })
+    }, [propertyId])
 
 return (
     <div className="real-estate-details">
     <h1>New York</h1>
-    <p>Type: </p>
-    <p>Size: </p>
-    <p>Price: </p>
-    <p>Location: </p>
-    <p>Description: </p>
+    <img src={property.imageUrl} alt="" />
+    <p>Type: {property.type}</p>
+    <p>Size: {property.size}</p>
+    <p>Price: ${property.price}</p>
+    <p>Location: {property.location}</p>
+    <p>Description: {property.description}</p>
 
     <h2>Comments</h2>
     {/* <ul>

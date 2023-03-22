@@ -11,3 +11,11 @@ export const getAll = async () => {
 
 
 }
+
+export const getOne = async (propertyId) => {
+
+    const result = await request.get(`${baseUrl}/${propertyId}`);
+
+    return result;
+
+}
