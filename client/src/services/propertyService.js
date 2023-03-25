@@ -3,7 +3,7 @@ import { requestFactory } from './requester';
 const baseUrl = 'http://localhost:3030/data/properties';
 
 
-const propertyServiceFactory = (token) => {
+export const propertyServiceFactory = (token) => {
 
     const request = requestFactory(token);
 
@@ -28,7 +28,7 @@ const propertyServiceFactory = (token) => {
     return {
         getAll,
         getOne,
-        
+
     }
 
 }

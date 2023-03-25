@@ -1,6 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import {useState, useEffect} from 'react';
+
+import { AuthContext } from './contexts/authContext';
 
 import { propertyServiceFactory } from './services/propertyService';
 import { authServiceFactory } from './services/authService';
@@ -16,7 +18,11 @@ import { PropertyDetails } from './components/PropertyDetails/PropertyDetails';
 
 function App() {
 
+  const navigate = useNavigate();
+
 const [properties, setProperties] = useState([]);
+
+const [auth, setAuth] = useState({});
 
 const propertyService = propertyServiceFactory();
 const authService = authServiceFactory();
@@ -33,14 +39,22 @@ const onLoginSubmit = async (data) => {
 
   try {
     const result = await authService.login(data);
+    // console.log(result);
+    setAuth(result);
+    navigate('/');
   } catch (error) {
     console.log('Error in login');
   }
 
+};
+
+const contextValues = {
+  onLoginSubmit,
 }
 
 
   return (
+    <AuthContext.Provider value={contextValues}>
     <div>
       <Header />
     <main>
@@ -55,6 +69,7 @@ const onLoginSubmit = async (data) => {
     </main>
       <Footer />
     </div>
+    </AuthContext.Provider>
   );
 }
 

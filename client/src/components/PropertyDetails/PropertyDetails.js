@@ -1,12 +1,16 @@
 import styles from './PropertyDetails.module.css'
 
-import * as propertyService from '../../services/propertyService';
+import {propertyServiceFactory} from '../../services/propertyService';
+import { useService } from '../../hooks/useService';
+
 
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 
 export const PropertyDetails = () => {
+
+    const propertyService = useService(propertyServiceFactory);
 
     const [property, setProperty] = useState({});
 
