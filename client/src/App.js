@@ -24,8 +24,8 @@ const [properties, setProperties] = useState([]);
 
 const [auth, setAuth] = useState({});
 
-const propertyService = propertyServiceFactory();
-const authService = authServiceFactory();
+const propertyService = propertyServiceFactory(auth.accessToken);
+const authService = authServiceFactory(auth.accessToken);
 
 useEffect(() => {
   propertyService.getAll()
@@ -45,11 +45,25 @@ const onLoginSubmit = async (data) => {
   } catch (error) {
     console.log('Error in login');
   }
-
 };
+
+const onCreateSubmit = async (data) => {
+  const newProperty = await propertyService.create(data);
+
+  console.log('New prop');
+  console.log(newProperty);
+
+  setProperties(state => [...state, newProperty]);
+
+  navigate('/catalog');
+}
 
 const contextValues = {
   onLoginSubmit,
+  userId: auth._id,
+  token: auth.accessToken,
+  userEmail: auth.email,
+  isAuthenticated: !!auth.accessToken,
 }
 
 
@@ -64,7 +78,7 @@ const contextValues = {
         <Route path="/register" element={ <Register />} />
         <Route path="/catalog" element={     <Catalog properties={properties} />} />
         <Route path="/catalog/:propertyId" element={ <PropertyDetails /> } />
-        <Route path="/create-property" element={ <CreateProperty />} />
+        <Route path="/create-property" element={ <CreateProperty onCreateSubmit={onCreateSubmit} />} />
       </Routes>
     </main>
       <Footer />
