@@ -2,7 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 
 import {useState, useEffect} from 'react';
 
-import * as propertyService from './services/propertyService';
+import { propertyServiceFactory } from './services/propertyService';
+import { authServiceFactory } from './services/authService';
 
 import { CreateProperty } from "./components/CreateProperty/CreateProperty";
 import { Footer } from "./components/Footer/Footer";
@@ -16,6 +17,9 @@ import { PropertyDetails } from './components/PropertyDetails/PropertyDetails';
 function App() {
 
 const [properties, setProperties] = useState([]);
+
+const propertyService = propertyServiceFactory();
+const authService = authServiceFactory();
 
 useEffect(() => {
   propertyService.getAll()
