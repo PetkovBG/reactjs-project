@@ -20,10 +20,20 @@ const [properties, setProperties] = useState([]);
 useEffect(() => {
   propertyService.getAll()
   .then(result => {
-    // console.log(result)
+    console.log(result)
     setProperties(result)
   })
 }, []);
+
+const onLoginSubmit = async (data) => {
+
+  try {
+    const result = await authService.login(data);
+  } catch (error) {
+    console.log('Error in login');
+  }
+
+}
 
 
   return (
