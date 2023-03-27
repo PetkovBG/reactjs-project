@@ -5,6 +5,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import {propertyServiceFactory} from '../../services/propertyService';
 import { useService } from '../../hooks/useService';
 
+import { AuthContext } from '../../contexts/authContext';
+import { useContext } from 'react';
+
 
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
@@ -18,6 +21,7 @@ export const PropertyDetails = () => {
 
     const [property, setProperty] = useState({});
 
+    const { userId } = useContext(AuthContext);
     const {propertyId} = useParams();
 
     useEffect(() => {
@@ -27,6 +31,8 @@ export const PropertyDetails = () => {
             setProperty(result);
         })
     }, [propertyId]);
+
+    const isOwner = property._ownerId === userId;
 
     const onDeleteClick = async () => {
 
@@ -53,10 +59,13 @@ return (
 
     <h2>Comments</h2>
 
-    < div className="buttons">
-                            <Link to={`/catalog/${propertyId}/edit`} className="button">Edit</Link>
-                            <button className="button" onClick={onDeleteClick}>Delete</button>
-                        </div>
+    {isOwner && (
+       < div className="buttons">
+       <Link to={`/catalog/${propertyId}/edit`} className="button">Edit</Link>
+       <button className="button" onClick={onDeleteClick}>Delete</button>
+   </div>
+    )}
+   
 
 
     {/* <ul>
