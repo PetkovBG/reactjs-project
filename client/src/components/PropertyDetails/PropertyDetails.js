@@ -1,6 +1,6 @@
 import styles from './PropertyDetails.module.css'
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {propertyServiceFactory} from '../../services/propertyService';
 import { useService } from '../../hooks/useService';
@@ -11,6 +11,8 @@ import { useParams } from 'react-router-dom';
 
 
 export const PropertyDetails = () => {
+
+    const navigate = useNavigate();
 
     const propertyService = useService(propertyServiceFactory);
 
@@ -24,7 +26,20 @@ export const PropertyDetails = () => {
             console.log('Log from new property - details', result);
             setProperty(result);
         })
-    }, [propertyId])
+    }, [propertyId]);
+
+    const onDeleteClick = async () => {
+
+        let result = window.confirm('Are you sure you want to delete this record?')
+
+        if (result) {
+            await propertyService.delete(property._id);
+            navigate('/catalog')
+        } else {
+            return;
+        }
+
+    }
 
 return (
     <div className="real-estate-details">
@@ -39,8 +54,8 @@ return (
     <h2>Comments</h2>
 
     < div className="buttons">
-                            <Link to={`/catalog/${property._id}/edit`} className="button">Edit</Link>
-                            <button className="button" onClick={() => console.log('Hello from delete')}>Delete</button>
+                            <Link to={`/catalog/${propertyId}/edit`} className="button">Edit</Link>
+                            <button className="button" onClick={onDeleteClick}>Delete</button>
                         </div>
 
 

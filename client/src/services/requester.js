@@ -43,7 +43,7 @@ export const requestFactory = (token) => {
         post: request.bind(null, 'POST', token),
         put: request.bind(null, 'PUT', token),
         patch: request.bind(null, 'PATCH', token),
-        del: request.bind(null, 'DELETE', token),
+        delete: request.bind(null, 'DELETE', token),
     }
 }
 

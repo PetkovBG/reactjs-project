@@ -30,12 +30,17 @@ export const propertyServiceFactory = (token) => {
         console.log('Log from create');
         console.log(result);
         return result;
+    };
+
+    const deleteProperty = async (propertyId) => {
+        const result = request.delete(`${baseUrl}/${propertyId}`);
     }
 
     return {
         getAll,
         getOne,
         create,
+        delete: deleteProperty,
     }
 
 }
