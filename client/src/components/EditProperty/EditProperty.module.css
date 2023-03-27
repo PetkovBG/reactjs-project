@@ -1,0 +1,57 @@
+.editListing {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .editListing h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .editListing label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .editListing input,
+  .editListing textarea {
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  
+  .editListing input::placeholder,
+  .editListing textarea::placeholder {
+    color: #ccc;
+  }
+  
+  .editListing button {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .editListing button:hover {
+    background-color: #0069d9;
+  }
+  
+  .input:focus,
+  .textarea:focus {
+    outline: none;
+    border: 1px solid #007bff;
+  }
+  
+  .btn {
+    margin-top: 10px;
+  }
+  

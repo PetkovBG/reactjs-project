@@ -16,6 +16,7 @@ import { Catalog } from "./components/Properties/Catalog";
 import { Register } from "./components/Register/Register";
 import { PropertyDetails } from './components/PropertyDetails/PropertyDetails';
 import { Logout } from './components/Logout/Logout';
+import { EditProperty } from './components/EditProperty/EditProperty';
 
 function App() {
 
@@ -78,6 +79,13 @@ const onCreateSubmit = async (data) => {
   navigate('/catalog');
 };
 
+const onPropertyEditSubmit = async (values) => {
+  const result = await propertyService.edit(values._id, values);
+  console.log('Property Edit', result);
+  setProperties(state => state.map(x => x._id === values._id ? result : x));
+  navigate(`/catalog/${values._id}`);
+}
+
 const onLogout = async () => {
   //TODO authorize request
 
@@ -106,9 +114,10 @@ const contextValues = {
         <Route path="/login" element={ <Login />} />
         <Route path="/register" element={ <Register />} />
         <Route path="/logout" element={ <Logout />} />
+        <Route path="/create-property" element={ <CreateProperty onCreateSubmit={onCreateSubmit} />} />
         <Route path="/catalog" element={     <Catalog properties={properties} />} />
         <Route path="/catalog/:propertyId" element={ <PropertyDetails /> } />
-        <Route path="/create-property" element={ <CreateProperty onCreateSubmit={onCreateSubmit} />} />
+        <Route path="/catalog/:propertyId/edit" element={ <EditProperty onPropertyEditSubmit={onPropertyEditSubmit}/> } />
       </Routes>
     </main>
       <Footer />
