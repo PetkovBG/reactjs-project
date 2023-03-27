@@ -35,6 +35,25 @@ useEffect(() => {
   })
 }, []);
 
+const onRegisterSubmit = async (values) => {
+  const {confirmPassword, ...registerData} = values;
+
+  if (confirmPassword !== registerData.password) {
+    //TODO - add error handling
+    return;
+  }
+
+  try {
+    const result = await authService.register(registerData)
+    console.log('Log from registerSubmit', result);
+
+    setAuth(result);
+    navigate('/login');
+  } catch (error) {
+    console.log('Error from regiser submit', error);
+  }
+};
+
 const onLoginSubmit = async (data) => {
 
   try {
@@ -60,6 +79,7 @@ const onCreateSubmit = async (data) => {
 
 const contextValues = {
   onLoginSubmit,
+  onRegisterSubmit,
   userId: auth._id,
   token: auth.accessToken,
   userEmail: auth.email,

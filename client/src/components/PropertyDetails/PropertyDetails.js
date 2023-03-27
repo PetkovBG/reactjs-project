@@ -26,7 +26,7 @@ export const PropertyDetails = () => {
 
 return (
     <div className="real-estate-details">
-    <h1>New York</h1>
+    <h1>{property.name}</h1>
     <img src={property.imageUrl} alt="" />
     <p>Type: {property.type}</p>
     <p>Size: {property.size}</p>
