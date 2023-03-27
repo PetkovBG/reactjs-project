@@ -30,7 +30,7 @@ const authService = authServiceFactory(auth.accessToken);
 useEffect(() => {
   propertyService.getAll()
   .then(result => {
-    console.log(result)
+    // console.log(result)
     setProperties(result)
   })
 }, []);
@@ -69,8 +69,8 @@ const onLoginSubmit = async (data) => {
 const onCreateSubmit = async (data) => {
   const newProperty = await propertyService.create(data);
 
-  console.log('New prop');
-  console.log(newProperty);
+  // console.log('New prop');
+  // console.log(newProperty);
 
   setProperties(state => [...state, newProperty]);
 

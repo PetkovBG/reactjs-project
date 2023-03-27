@@ -1,5 +1,7 @@
 import styles from './PropertyDetails.module.css'
 
+import { Link } from 'react-router-dom';
+
 import {propertyServiceFactory} from '../../services/propertyService';
 import { useService } from '../../hooks/useService';
 
@@ -19,7 +21,7 @@ export const PropertyDetails = () => {
     useEffect(() => {
         propertyService.getOne(propertyId)
         .then(result => {
-            console.log(result);
+            console.log('Log from new property - details', result);
             setProperty(result);
         })
     }, [propertyId])
@@ -35,6 +37,13 @@ return (
     <p>Description: {property.description}</p>
 
     <h2>Comments</h2>
+
+    < div className="buttons">
+                            <Link to={`/catalog/${property._id}/edit`} className="button">Edit</Link>
+                            <button className="button" onClick={() => console.log('Hello from delete')}>Delete</button>
+                        </div>
+
+
     {/* <ul>
       {comments.map((comment, index) => (
         <li key={index}>{comment} <button onClick={handleDelete}>Delete</button> <button onClick={handleEdit}>Edit</button></li>
