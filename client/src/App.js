@@ -15,6 +15,7 @@ import { Login } from "./components/Login/Login";
 import { Catalog } from "./components/Properties/Catalog";
 import { Register } from "./components/Register/Register";
 import { PropertyDetails } from './components/PropertyDetails/PropertyDetails';
+import { Logout } from './components/Logout/Logout';
 
 function App() {
 
@@ -75,11 +76,19 @@ const onCreateSubmit = async (data) => {
   setProperties(state => [...state, newProperty]);
 
   navigate('/catalog');
+};
+
+const onLogout = async () => {
+  //TODO authorize request
+
+  await authService.logout();
+  setAuth({});
 }
 
 const contextValues = {
   onLoginSubmit,
   onRegisterSubmit,
+  onLogout,
   userId: auth._id,
   token: auth.accessToken,
   userEmail: auth.email,
@@ -96,6 +105,7 @@ const contextValues = {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={ <Login />} />
         <Route path="/register" element={ <Register />} />
+        <Route path="/logout" element={ <Logout />} />
         <Route path="/catalog" element={     <Catalog properties={properties} />} />
         <Route path="/catalog/:propertyId" element={ <PropertyDetails /> } />
         <Route path="/create-property" element={ <CreateProperty onCreateSubmit={onCreateSubmit} />} />
