@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -28,12 +28,13 @@ export const AuthProviderComponent = ({
           console.log('Log from registerSubmit', result);
       
           setAuth(result);
-          navigate('/login');
+          navigate('/catalog');
         } catch (error) {
           console.log('Error from regiser submit', error);
         }
       };
 
+      //TODO - move the below functionality outside of the context
       const onLoginSubmit = async (data) => {
 
         try {
@@ -71,4 +72,10 @@ const contextValues = {
         </>
     );
 
+}
+
+export const useAuthContext = () => {
+    const context = useContext(AuthContext);
+
+    return context;
 }
