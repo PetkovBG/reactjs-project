@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {propertyServiceFactory} from '../../services/propertyService';
 import { useService } from '../../hooks/useService';
 
-import { AuthContext } from '../../contexts/authContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
 
 

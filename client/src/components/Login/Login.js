@@ -1,6 +1,6 @@
 import styles from './Login.module.css';
 
-import { AuthContext } from '../../contexts/authContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
 import { useForm } from '../../hooks/useForm';
 

@@ -2,7 +2,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import {useState, useEffect} from 'react';
 
-import { AuthContext } from './contexts/authContext';
+import { AuthContext, AuthProviderComponent } from './contexts/AuthContext';
 
 import { propertyServiceFactory } from './services/propertyService';
 import { authServiceFactory } from './services/authService';
@@ -39,17 +39,7 @@ useEffect(() => {
 
 
 
-const onLoginSubmit = async (data) => {
 
-  try {
-    const result = await authService.login(data);
-    // console.log(result);
-    setAuth(result);
-    navigate('/');
-  } catch (error) {
-    console.log('Error in login');
-  }
-};
 
 const onCreateSubmit = async (data) => {
   const newProperty = await propertyService.create(data);
@@ -69,15 +59,10 @@ const onPropertyEditSubmit = async (values) => {
   navigate(`/catalog/${values._id}`);
 }
 
-const onLogout = async () => {
-  //TODO authorize request
 
-  await authService.logout();
-  setAuth({});
-}
 
   return (
-    <AuthContext.Provider value={contextValues}>
+    <AuthProviderComponent>
     <div>
       <Header />
     <main>
@@ -94,7 +79,7 @@ const onLogout = async () => {
     </main>
       <Footer />
     </div>
-    </AuthContext.Provider>
+    </AuthProviderComponent>
   );
 }
 
