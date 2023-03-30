@@ -14,10 +14,14 @@ export const Header = () => {
             <nav>
                 <ul>
                     <li><Link to="/">Home</Link></li>
+                    {isAuthenticated && (
+                         <li>Welcome {userEmail}</li>
+                    )}
                     <li><Link to="/catalog">Properties</Link></li>
 
                     {isAuthenticated && (
                         <>
+                           
                             <li><Link to="/create-property">Add Property</Link></li>
                             <li><Link to="/profile">Profile</Link></li>
                             <li><Link to="/logout">Logout</Link></li>

@@ -2,10 +2,10 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import {useState, useEffect} from 'react';
 
-import { AuthContext, AuthProviderComponent } from './contexts/AuthContext';
+import { AuthProviderComponent } from './contexts/AuthContext';
 
 import { propertyServiceFactory } from './services/propertyService';
-import { authServiceFactory } from './services/authService';
+// import { authServiceFactory } from './services/authService';
 
 import { CreateProperty } from "./components/CreateProperty/CreateProperty";
 import { Footer } from "./components/Footer/Footer";
@@ -24,10 +24,9 @@ function App() {
 
 const [properties, setProperties] = useState([]);
 
-const [auth, setAuth] = useState({});
 
-const propertyService = propertyServiceFactory(auth.accessToken);
-const authService = authServiceFactory(auth.accessToken);
+const propertyService = propertyServiceFactory();
+// const authService = authServiceFactory(auth.accessToken);
 
 useEffect(() => {
   propertyService.getAll()

@@ -3,7 +3,7 @@ import { useState } from "react";
 export const useLocalStorage = (key, initialValue) => {
 
      
-    console.log("useLocalStorage", key);
+    console.log("Log from useLocalStorage", key);
     console.log(initialValue);
     const [state, setState] = useState(() => {
 

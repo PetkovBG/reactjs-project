@@ -48,7 +48,7 @@ export const PropertyDetails = () => {
     }
 
 return (
-    <div className="real-estate-details">
+    <div className={styles["real-estate-details"]}>
     <h1>{property.name}</h1>
     <img src={property.imageUrl} alt="" />
     <p>Type: {property.type}</p>
