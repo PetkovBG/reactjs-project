@@ -4,6 +4,7 @@ import { CatalogItem } from './CatalogItem/CatalogItem';
 export const Catalog = ({
   properties,
 }) => {
+  console.log("log from catalog", properties);
     return (
 <section className={styles.catalog}>
   <h2>Real Estate Catalog</h2>
