@@ -8,6 +8,8 @@ import { useService } from '../../hooks/useService';
 import { AuthContext, useAuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
 
+import * as commentService from '../../services/commentService';
+
 
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
@@ -16,14 +18,18 @@ import { AddComment } from './AddComment/AddComment';
 
 export const PropertyDetails = () => {
 
+  const [game, setGame] = useState({});
+
     const navigate = useNavigate();
 
     const propertyService = useService(propertyServiceFactory);
 
     const [property, setProperty] = useState({});
 
-    const { userId, isAuthenticated } = useAuthContext();
+    const { userId, isAuthenticated, userEmail } = useAuthContext();
     const {propertyId} = useParams();
+
+    
 
     useEffect(() => {
         propertyService.getOne(propertyId)
@@ -48,6 +54,24 @@ export const PropertyDetails = () => {
 
     }
 
+    const onCommentSubmit = async (values) => {
+        const response = await commentService.create(gameId, values.comment);
+
+        console.log('Response from comment submit', response);
+
+        setGame(state => ({
+          ...state,
+          comments: [
+            ...state.comments,
+            {
+              ...response,
+              author: { email: userEmail}
+            }
+          ],
+        }))
+
+    };
+
 return (
     <div className={styles["real-estate-details"]}>
     <h1>{property.name}</h1>
@@ -67,7 +91,7 @@ return (
    </div>
     )}
    
-      {isAuthenticated && <AddComment />}
+      {isAuthenticated && <AddComment onCommentSubmit={onCommentSubmit} />}
 
   </div>
 );
