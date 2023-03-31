@@ -25,7 +25,7 @@ export const AuthProviderComponent = ({
       
         try {
           const result = await authService.register(registerData)
-          console.log('Log from registerSubmit', result);
+        //   console.log('Log from registerSubmit', result);
       
           setAuth(result);
           navigate('/catalog');

@@ -4,8 +4,10 @@ const baseUrl = 'http://localhost:3030/data/comments'
 
 const request = requestFactory();
 
-export const create = async (gameId, comment) => {
-    const result = await request.post(baseUrl, { gameId, comment });
+export const create = async (propertyId, comment) => {
+    console.log(propertyId);
+    console.log(comment);
+    const result = await request.post(baseUrl, { propertyId, comment });
 
     console.log("Log from commentService create", result);
 

@@ -27,8 +27,8 @@ export const propertyServiceFactory = (token) => {
 
     const create = async (propertyData) => {
         const result = await request.post(baseUrl, propertyData);
-        console.log('Log from create');
-        console.log(result);
+        // console.log('Log from create');
+        // console.log(result);
         return result;
     };
 

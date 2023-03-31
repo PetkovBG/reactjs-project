@@ -3,8 +3,8 @@ import { useState } from "react";
 export const useLocalStorage = (key, initialValue) => {
 
      
-    console.log("Log from useLocalStorage", key);
-    console.log(initialValue);
+    // console.log("Log from useLocalStorage", key);
+    // console.log(initialValue);
     const [state, setState] = useState(() => {
         //this is a synchronous operation
         const persistedStateSerialized = localStorage.getItem(key);
