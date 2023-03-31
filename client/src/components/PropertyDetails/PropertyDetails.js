@@ -5,12 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import {propertyServiceFactory} from '../../services/propertyService';
 import { useService } from '../../hooks/useService';
 
-import { AuthContext } from '../../contexts/AuthContext';
+import { AuthContext, useAuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
 
 
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
+import { AddComment } from './AddComment/AddComment';
 
 
 export const PropertyDetails = () => {
@@ -21,7 +22,7 @@ export const PropertyDetails = () => {
 
     const [property, setProperty] = useState({});
 
-    const { userId } = useContext(AuthContext);
+    const { userId, isAuthenticated } = useAuthContext();
     const {propertyId} = useParams();
 
     useEffect(() => {
@@ -66,22 +67,8 @@ return (
    </div>
     )}
    
+      {isAuthenticated && <AddComment />}
 
-
-    {/* <ul>
-      {comments.map((comment, index) => (
-        <li key={index}>{comment} <button onClick={handleDelete}>Delete</button> <button onClick={handleEdit}>Edit</button></li>
-      ))}
-    </ul> */}
-    {/* onSubmit={handleSubmit} */}
-    <form >
-      <label>
-        Add a comment:
-        <input type="text"  />
-        {/* value={newComment} onChange={(e) => setNewComment(e.target.value)} */}
-      </label>
-      <button type="submit">Submit</button>
-    </form>
   </div>
 );
 
