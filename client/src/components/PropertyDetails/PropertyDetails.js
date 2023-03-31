@@ -30,10 +30,13 @@ export const PropertyDetails = () => {
 
 
   useEffect(() => {
-    propertyService.getOne(propertyId)
-      .then(result => {
-        // console.log('Log from new property - details', result);
-        setProperty(result);
+    Promise.all(
+      propertyService.getOne(propertyId),
+      commentService.getAll(propertyId),
+    )
+      .then(values => {
+        console.log('Promise all useEffect', values);
+        setProperty(values);
       })
   }, [propertyId]);
 

@@ -14,9 +14,9 @@ export const create = async (propertyId, comment) => {
     return result;
 }
 
-export const getAll = async (gameId) => {
+export const getAll = async (propertyId) => {
 
-    const searchQuery = encodeURIComponent(`gameId="${gameId}"`);
+    const searchQuery = encodeURIComponent(`propertyId="${propertyId}"`);
     const relationQuery = encodeURIComponent(`author=_ownerId:users`)
     const result = await request.get(`${baseUrl}?where=${searchQuery}&load=${relationQuery}`);
 
