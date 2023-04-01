@@ -30,13 +30,17 @@ export const PropertyDetails = () => {
 
 
   useEffect(() => {
-    Promise.all(
+    Promise.all([
       propertyService.getOne(propertyId),
       commentService.getAll(propertyId),
-    )
-      .then(values => {
-        console.log('Promise all useEffect', values);
-        setProperty(values);
+    ])
+      .then(([gameData, commentsData]) => {
+        console.log('Promise all useEffect', gameData);
+        console.log('Promise all useEffect', commentsData);
+        setProperty({
+          ...gameData,
+          comments: commentsData,
+        });
       })
   }, [propertyId]);
 
@@ -94,6 +98,13 @@ export const PropertyDetails = () => {
       )}
 
       <h2>Comments</h2>
+      <ul>
+        {property.comments && property.comments.map(x => (
+          <li key={x._id}>
+            <p>{x.author.email}: {x.comment}</p>
+          </li>
+        ))}
+      </ul>
 
       {!property.comments?.length && (
         <p>No comments</p>
