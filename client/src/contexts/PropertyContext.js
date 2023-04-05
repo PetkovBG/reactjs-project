@@ -42,6 +42,10 @@ const onCreateSubmit = async (data) => {
     navigate(`/catalog/${values._id}`);
   };
 
+  const getProperty = (propertyId) => {
+    return properties.find(x => x._id === propertyId);
+  }
+
   const deleteProperty = (propertyId) => {
 
     setProperties(state => state.filter(x => x._id !== propertyId));
@@ -52,6 +56,7 @@ const onCreateSubmit = async (data) => {
         properties,
         onCreateSubmit,
         onPropertyEditSubmit,
+        getProperty,
         deleteProperty,
     }
       
