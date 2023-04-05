@@ -5,10 +5,11 @@ import { useEffect } from 'react';
 import { useService } from '../../hooks/useService';
 import { useForm } from '../../hooks/useForm';
 import { propertyServiceFactory } from '../../services/propertyService';
+import { usePropertyContext } from '../../contexts/PropertyContext';
 
-    export const EditProperty = ({
-      onPropertyEditSubmit,
-    }) => {
+    export const EditProperty = () => {
+
+      const { onPropertyEditSubmit } = usePropertyContext();
 
       const {propertyId} = useParams();
 

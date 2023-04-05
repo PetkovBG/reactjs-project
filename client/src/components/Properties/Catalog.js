@@ -1,9 +1,10 @@
 import styles from './Catalog.module.css';
 import { CatalogItem } from './CatalogItem/CatalogItem';
+import { usePropertyContext } from '../../contexts/PropertyContext';
 
-export const Catalog = ({
-  properties,
-}) => {
+export const Catalog = () => {
+
+  const { properties } = usePropertyContext();
   // console.log("log from catalog", properties);
     return (
 <section className={styles.catalog}>

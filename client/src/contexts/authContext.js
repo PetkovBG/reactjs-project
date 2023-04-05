@@ -12,16 +12,16 @@ export const AuthProviderComponent = ({
     const navigate = useNavigate();
 
     const [auth, setAuth] = useLocalStorage('auth', {});
-    // const authService = authServiceFactory(auth.accessToken);
+    const authService = authServiceFactory(auth.accessToken);
 
-    //NEW
-    const [authService, setAuthService] = useState(authServiceFactory(auth.accessToken));
+    // //NEW
+    // const [authService, setAuthService] = useState(authServiceFactory(auth.accessToken));
+    
+    // useEffect(() => {
+    //     setAuthService(authServiceFactory(auth.accessToken));
+    // }, [auth])
 
-    useEffect(() => {
-        setAuthService(authServiceFactory(auth.accessToken));
-    }, [auth])
-
-    //END
+    // //END
     const onRegisterSubmit = async (values) => {
         const {confirmPassword, ...registerData} = values;
       
@@ -43,10 +43,9 @@ export const AuthProviderComponent = ({
 
       //TODO - move the below functionality outside of the context
       const onLoginSubmit = async (data) => {
-
         try {
           const result = await authService.login(data);
-          // console.log(result);
+          console.log(result);
           setAuth(result);
           navigate('/');
         } catch (error) {

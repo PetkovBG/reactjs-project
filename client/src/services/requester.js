@@ -68,6 +68,6 @@ export const requestFactory = () => {
     }
 };
 
-export const request = requestFactory(localStorage.getItem('auth'));
+// export const request = requestFactory(localStorage.getItem('auth'));
 // export const request = requestFactory();
 

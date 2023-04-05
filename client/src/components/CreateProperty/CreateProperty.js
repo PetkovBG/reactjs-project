@@ -1,10 +1,11 @@
 import styles from './CreateProperty.module.css';
+import { usePropertyContext } from '../../contexts/PropertyContext';
 
 import { useForm } from '../../hooks/useForm';
 
-export const CreateProperty = ({
-    onCreateSubmit,
-}) => {
+export const CreateProperty = () => {
+
+    const { onCreateSubmit } = usePropertyContext();
 
     const { values, changeHandler, onSubmit } = useForm({
         name: '',

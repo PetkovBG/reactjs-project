@@ -37,13 +37,20 @@ export const PropertyDetails = () => {
       propertyService.getOne(propertyId),
       commentService.getAll(propertyId),
     ])
-      .then(([gameData, commentsData]) => {
-        console.log('Promise all useEffect', gameData);
+      .then(([propertyData, commentsData]) => {
+        console.log('Promise all useEffect', propertyData);
         console.log('Promise all useEffect', commentsData);
-        setProperty({
-          ...gameData,
-          comments: commentsData,
-        });
+        
+        const propertyState = {
+          ...propertyData,
+          commentsData,
+        }
+
+        dispatch({
+          type: "PROPERTY_FETCH",
+          payload: propertyState,
+        })
+
       })
   }, [propertyId]);
 
