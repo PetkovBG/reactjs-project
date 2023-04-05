@@ -11,10 +11,12 @@ import { useContext } from 'react';
 import * as commentService from '../../services/commentService';
 
 
-import { useState, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 import { AddComment } from './AddComment/AddComment';
 import { propertyReducer } from '../../reducers/propertyReducer';
+
+import { usePropertyContext } from '../../contexts/PropertyContext';
 
 
 export const PropertyDetails = () => {
@@ -24,9 +26,9 @@ export const PropertyDetails = () => {
   const propertyService = useService(propertyServiceFactory);
 
   // const [property, setProperty] = useState({});
-
   const { userId, isAuthenticated, userEmail } = useAuthContext();
   const { propertyId } = useParams();
+  const { deleteProperty } = usePropertyContext();
 
   const [property, dispatch] = useReducer(propertyReducer, {});
 
@@ -62,6 +64,7 @@ export const PropertyDetails = () => {
 
     if (result) {
       await propertyService.delete(property._id);
+      deleteProperty(property._id);
       navigate('/catalog')
     } else {
       return;

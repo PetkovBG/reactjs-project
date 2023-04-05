@@ -40,12 +40,19 @@ const onCreateSubmit = async (data) => {
     console.log('Property Edit', result);
     setProperties(state => state.map(x => x._id === values._id ? result : x));
     navigate(`/catalog/${values._id}`);
+  };
+
+  const deleteProperty = (propertyId) => {
+
+    setProperties(state => state.filter(x => x._id !== propertyId));
+
   }
 
     const contextValues = {
         properties,
         onCreateSubmit,
         onPropertyEditSubmit,
+        deleteProperty,
     }
       
     return (

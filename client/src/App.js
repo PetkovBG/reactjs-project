@@ -1,6 +1,5 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, } from 'react-router-dom';
 
-import {useState, useEffect} from 'react';
 
 import { AuthProviderComponent } from './contexts/AuthContext';
 import { PropertyProvider } from './contexts/PropertyContext';
@@ -20,16 +19,6 @@ import { Logout } from './components/Logout/Logout';
 import { EditProperty } from './components/EditProperty/EditProperty';
 
 function App() {
-
-
-// const authService = authServiceFactory(auth.accessToken);
-
-
-
-
-
-
-
 
 
   return (
