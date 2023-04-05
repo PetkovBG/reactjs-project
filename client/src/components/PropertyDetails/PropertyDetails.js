@@ -60,10 +60,10 @@ export const PropertyDetails = () => {
   }
 
   const onCommentSubmit = async (values) => {
-    console.log('Comment submit', values);
+    // console.log('Comment submit', values);
     const response = await commentService.create(propertyId, values.comment);
 
-    console.log('Response from comment submit', response);
+    // console.log('Response from comment submit', response);
 
     setProperty(state => ({
       ...state,

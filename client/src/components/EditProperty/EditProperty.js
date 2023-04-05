@@ -28,7 +28,7 @@ import { propertyServiceFactory } from '../../services/propertyService';
       useEffect(() => {
         propertyService.getOne(propertyId)
         .then(result => {
-          console.log('Log from edit useEffect', result);
+          // console.log('Log from edit useEffect', result);
           changeValues(result);
         })
       }, [propertyId]);

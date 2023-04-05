@@ -13,12 +13,31 @@ const requester = async (method, token, url, data) => {
         }
     };
 
-    if (token) {
-        options.headers = {
-            ...options.headers,
-            'X-Authorization': token,
-        }
+    // if (token) {
+    //     options.headers = {
+    //         ...options.headers,
+    //         'X-Authorization': token,
+    //     }
+    // }
+
+    //NEW
+    const serializedAuth = localStorage.getItem('auth');
+
+    let newToken;
+    if (serializedAuth) {
+        const auth = JSON.parse(serializedAuth);
+        newToken = auth.accessToken;
+
     }
+
+    if(newToken) {
+    options.headers = {
+                ...options.headers,
+                'X-Authorization': newToken,
+            }
+        }
+    
+//END
 
     const response = await fetch(url, options);
 
@@ -37,27 +56,18 @@ const requester = async (method, token, url, data) => {
 
 };
 
-export const requestFactory = (token) => {
+export const requestFactory = () => {
 
-    if(!token) {
-        const serializedAuth = localStorage.getItem('auth');
-
-        if (serializedAuth) {
-            const auth = JSON.parse(serializedAuth);
-            token = auth.accessToken;
-        }
-
-
-    }
 
     return {
-        get: requester.bind(null, 'GET', token),
-        post: requester.bind(null, 'POST', token),
-        put: requester.bind(null, 'PUT', token),
-        patch: requester.bind(null, 'PATCH', token),
-        delete: requester.bind(null, 'DELETE', token),
+        get: requester.bind(null, 'GET'),
+        post: requester.bind(null, 'POST'),
+        put: requester.bind(null, 'PUT'),
+        patch: requester.bind(null, 'PATCH'),
+        delete: requester.bind(null, 'DELETE'),
     }
 };
 
 export const request = requestFactory(localStorage.getItem('auth'));
+// export const request = requestFactory();
 

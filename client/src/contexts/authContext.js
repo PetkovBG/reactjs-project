@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -12,9 +12,16 @@ export const AuthProviderComponent = ({
     const navigate = useNavigate();
 
     const [auth, setAuth] = useLocalStorage('auth', {});
-    const authService = authServiceFactory(auth.accessToken);
+    // const authService = authServiceFactory(auth.accessToken);
 
+    //NEW
+    const [authService, setAuthService] = useState(authServiceFactory(auth.accessToken));
 
+    useEffect(() => {
+        setAuthService(authServiceFactory(auth.accessToken));
+    }, [auth])
+
+    //END
     const onRegisterSubmit = async (values) => {
         const {confirmPassword, ...registerData} = values;
       
@@ -49,8 +56,9 @@ export const AuthProviderComponent = ({
 
       const onLogout = async () => {
         //TODO authorize request
-      
+        
         await authService.logout();
+        console.log('onLogout');
         setAuth({});
       }
 
