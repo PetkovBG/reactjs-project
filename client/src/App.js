@@ -17,6 +17,7 @@ import { Register } from "./components/Register/Register";
 import { PropertyDetails } from './components/PropertyDetails/PropertyDetails';
 import { Logout } from './components/Logout/Logout';
 import { EditProperty } from './components/EditProperty/EditProperty';
+import { RouteGuard } from './common/RouteGuard';
 
 function App() {
 
@@ -35,7 +36,11 @@ function App() {
         <Route path="/create-property" element={ <CreateProperty />} />
         <Route path="/catalog" element={     <Catalog />} />
         <Route path="/catalog/:propertyId" element={ <PropertyDetails /> } />
+
+        <Route element={<RouteGuard />}>
         <Route path="/catalog/:propertyId/edit" element={ <EditProperty /> } />
+        </Route>
+        
       </Routes>
     </main>
       <Footer />
