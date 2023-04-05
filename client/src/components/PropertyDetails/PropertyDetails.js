@@ -11,9 +11,10 @@ import { useContext } from 'react';
 import * as commentService from '../../services/commentService';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 import { AddComment } from './AddComment/AddComment';
+import { propertyReducer } from '../../reducers/propertyReducer';
 
 
 export const PropertyDetails = () => {
@@ -22,10 +23,12 @@ export const PropertyDetails = () => {
 
   const propertyService = useService(propertyServiceFactory);
 
-  const [property, setProperty] = useState({});
+  // const [property, setProperty] = useState({});
 
   const { userId, isAuthenticated, userEmail } = useAuthContext();
   const { propertyId } = useParams();
+
+  const [property, dispatch] = useReducer(propertyReducer, {});
 
 
 
@@ -65,16 +68,11 @@ export const PropertyDetails = () => {
 
     // console.log('Response from comment submit', response);
 
-    setProperty(state => ({
-      ...state,
-      comments: [
-        ...state.comments,
-        {
-          ...response,
-          author: { email: userEmail }
-        }
-      ],
-    }))
+      dispatch({
+        type: "COMMENT_ADD",
+        payload: response,
+        userEmail,
+      })
 
   };
 
