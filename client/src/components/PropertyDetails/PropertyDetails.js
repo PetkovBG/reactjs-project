@@ -30,41 +30,67 @@ export const PropertyDetails = () => {
   const { propertyId } = useParams();
   const { deleteProperty } = usePropertyContext();
 
-  const [property, dispatch] = useReducer(propertyReducer, {});
+  const [propertyData, dispatch] = useReducer(propertyReducer, { comments: [], property: {} });
 
 
 
   useEffect(() => {
-    Promise.all([
-      propertyService.getOne(propertyId),
-      commentService.getAll(propertyId),
-    ])
-      .then(([propertyData, commentsData]) => {
-        console.log('Promise all useEffect', propertyData);
-        console.log('Promise all useEffect', commentsData);
-        
-        const propertyState = {
-          ...propertyData,
-          commentsData,
-        }
 
+    propertyService.getOne(propertyId)
+      .then(res => {
+        console.log("getOne res:", res);
         dispatch({
           type: "PROPERTY_FETCH",
-          payload: propertyState,
+          payload: {
+            property: res,
+          },
         })
-
       })
+
+      commentService.getAll(propertyId)
+      .then(res => {
+        console.log("getAllComments res:", res);
+        dispatch({
+          type: "COMMENTS_FETCH",
+          payload: {
+            comments: res,
+          },
+        })
+      })
+
+
+
+
+    // Promise.all([
+    //   propertyService.getOne(propertyId),
+    //   commentService.getAll(propertyId),
+    // ])
+    //   .then(([propertyData, comments]) => {
+    //     console.log('Promise all useEffect', propertyData);
+    //     console.log('Promise all useEffect', comments);
+
+    //     const propertyState = {
+    //       ...propertyData,
+    //       comments,
+    //     }
+
+    //     dispatch({
+    //       type: "PROPERTY_FETCH",
+    //       payload: propertyState,
+    //     })
+
+    // })
   }, [propertyId]);
 
-  const isOwner = property._ownerId === userId;
+  const isOwner = propertyData.property._ownerId === userId;
 
   const onDeleteClick = async () => {
 
     let result = window.confirm('Are you sure you want to delete this record?')
 
     if (result) {
-      await propertyService.delete(property._id);
-      deleteProperty(property._id);
+      await propertyService.delete(propertyData.property._id);
+      deleteProperty(propertyData.property._id);
       navigate('/catalog')
     } else {
       return;
@@ -78,23 +104,23 @@ export const PropertyDetails = () => {
 
     // console.log('Response from comment submit', response);
 
-      dispatch({
-        type: "COMMENT_ADD",
-        payload: response,
-        userEmail,
-      })
+    dispatch({
+      type: "COMMENT_ADD",
+      payload: response,
+      userEmail,
+    })
 
   };
-
+      console.log("useReducer property state", propertyData);
   return (
     <div className={styles["real-estate-details"]}>
-      <h1>{property.name}</h1>
-      <img src={property.imageUrl} alt="" />
-      <p>Type: {property.type}</p>
-      <p>Size: {property.size}</p>
-      <p>Price: ${property.price}</p>
-      <p>Location: {property.location}</p>
-      <p>Description: {property.description}</p>
+      <h1>{propertyData.property.name}</h1>
+      <img src={propertyData.property.imageUrl} alt="" />
+      <p>Type: {propertyData.property.type}</p>
+      <p>Size: {propertyData.property.size}</p>
+      <p>Price: ${propertyData.property.price}</p>
+      <p>Location: {propertyData.property.location}</p>
+      <p>Description: {propertyData.property.description}</p>
 
 
 
@@ -107,14 +133,14 @@ export const PropertyDetails = () => {
 
       <h2>Comments</h2>
       <ul>
-        {property.comments && property.comments.map(x => (
+        {propertyData.comments && propertyData.comments.map(x => (
           <li key={x._id}>
             <p>{x.author.email}: {x.comment}</p>
           </li>
         ))}
       </ul>
 
-      {!property.comments?.length && (
+      {!propertyData.comments?.length && (
         <p>No comments</p>
       )}
 

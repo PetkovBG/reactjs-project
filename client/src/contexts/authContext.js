@@ -45,7 +45,7 @@ export const AuthProviderComponent = ({
       const onLoginSubmit = async (data) => {
         try {
           const result = await authService.login(data);
-          console.log(result);
+          // console.log(result);
           setAuth(result);
           navigate('/');
         } catch (error) {
@@ -57,7 +57,7 @@ export const AuthProviderComponent = ({
         //TODO authorize request
         
         await authService.logout();
-        console.log('onLogout');
+        // console.log('onLogout');
         setAuth({});
       }
 
