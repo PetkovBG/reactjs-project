@@ -25,27 +25,31 @@ function App() {
   return (
     <AuthProviderComponent>
       <PropertyProvider>
-    <div>
-      <Header />
-    <main>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={ <Login />} />
-        <Route path="/register" element={ <Register />} />
-        <Route path="/logout" element={ <Logout />} />
-        <Route path="/create-property" element={ <CreateProperty />} />
-        <Route path="/catalog" element={     <Catalog />} />
-        <Route path="/catalog/:propertyId" element={ <PropertyDetails /> } />
+        <div>
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/logout" element={<Logout />} />
 
-        <Route element={<RouteGuard />}>
-        <Route path="/catalog/:propertyId/edit" element={ <EditProperty /> } />
-        </Route>
-        
-      </Routes>
-    </main>
-      <Footer />
-    </div>
-    </PropertyProvider>
+              <Route element={<RouteGuard />}>
+                <Route path="/create-property" element={<CreateProperty />} />
+              </Route>
+
+              <Route path="/catalog" element={<Catalog />} />
+              <Route path="/catalog/:propertyId" element={<PropertyDetails />} />
+
+              <Route element={<RouteGuard />}>
+                <Route path="/catalog/:propertyId/edit" element={<EditProperty />} />
+              </Route>
+
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </PropertyProvider>
     </AuthProviderComponent>
   );
 }

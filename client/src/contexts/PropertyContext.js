@@ -15,42 +15,54 @@ export const PropertyProvider = ({
 
     const propertyService = propertyServiceFactory();
 
-    useEffect(() => {
-        propertyService.getAll()
+    // useEffect(() => {
+    //     propertyService.getAll()
+    //         .then(result => {
+    //             // console.log(result)
+    //             setProperties(result)
+    //         })
+    // }, []);
+
+    const getAllProperties =  () => {
+         propertyService.getAll()
         .then(result => {
-          // console.log(result)
-          setProperties(result)
+            console.log(result);
+            setProperties(result);
         })
-      }, []);
+        .catch((err) => {
+            console.log(err);
+
+        }) 
+    }
 
 
-const onCreateSubmit = async (data) => {
-    const newProperty = await propertyService.create(data);
-  
-    // console.log('New prop');
-    // console.log(newProperty);
-  
-    setProperties(state => [...state, newProperty]);
-  
-    navigate('/catalog');
-  };
-  
-  const onPropertyEditSubmit = async (values) => {
-    const result = await propertyService.edit(values._id, values);
-    console.log('Property Edit', result);
-    setProperties(state => state.map(x => x._id === values._id ? result : x));
-    navigate(`/catalog/${values._id}`);
-  };
+    const onCreateSubmit = async (data) => {
+        const newProperty = await propertyService.create(data);
 
-  const getProperty = (propertyId) => {
-    return properties.find(x => x._id === propertyId);
-  }
+        // console.log('New prop');
+        // console.log(newProperty);
 
-  const deleteProperty = (propertyId) => {
+        setProperties(state => [...state, newProperty]);
 
-    setProperties(state => state.filter(x => x._id !== propertyId));
+        navigate('/catalog');
+    };
 
-  }
+    const onPropertyEditSubmit = async (values) => {
+        const result = await propertyService.edit(values._id, values);
+        console.log('Property Edit', result);
+        setProperties(state => state.map(x => x._id === values._id ? result : x));
+        navigate(`/catalog/${values._id}`);
+    };
+
+    const getProperty = (propertyId) => {
+        return properties.find(x => x._id === propertyId);
+    }
+
+    const deleteProperty = (propertyId) => {
+
+        setProperties(state => state.filter(x => x._id !== propertyId));
+
+    }
 
     const contextValues = {
         properties,
@@ -58,13 +70,14 @@ const onCreateSubmit = async (data) => {
         onPropertyEditSubmit,
         getProperty,
         deleteProperty,
+        getAllProperties,
     }
-      
+
     return (
         <>
-        <PropertyContext.Provider value={contextValues}>
-            {children}
-        </PropertyContext.Provider>
+            <PropertyContext.Provider value={contextValues}>
+                {children}
+            </PropertyContext.Provider>
         </>
     );
 

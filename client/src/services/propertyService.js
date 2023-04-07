@@ -11,9 +11,7 @@ export const propertyServiceFactory = (token) => {
         const result = await request.get(baseUrl);
 
         const properties = Object.values(result);
-
         return properties;
-
 
     }
 

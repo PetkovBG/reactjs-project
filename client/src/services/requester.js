@@ -13,14 +13,7 @@ const requester = async (method, url, data) => {
         }
     };
 
-    // if (token) {
-    //     options.headers = {
-    //         ...options.headers,
-    //         'X-Authorization': token,
-    //     }
-    // }
 
-    //NEW
     const serializedAuth = localStorage.getItem('auth');
 
     let newToken;
@@ -30,18 +23,16 @@ const requester = async (method, url, data) => {
 
     }
 
-    if(newToken) {
-    options.headers = {
-                ...options.headers,
-                'X-Authorization': newToken,
-            }
+    if (newToken) {
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': newToken,
         }
+    }
     
-//END
-
     const response = await fetch(url, options);
 
-    // console.log(response);
+
     if (response.status === 204) {
         return {};
     }
@@ -68,6 +59,4 @@ export const requestFactory = () => {
     }
 };
 
-// export const request = requestFactory(localStorage.getItem('auth'));
-// export const request = requestFactory();
 

@@ -7,61 +7,61 @@ import { authServiceFactory } from "../services/authService";
 export const AuthContext = createContext();
 
 export const AuthProviderComponent = ({
-    children
+  children
 }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [auth, setAuth] = useLocalStorage('auth', {});
-    const authService = authServiceFactory(auth.accessToken);
+  const [auth, setAuth] = useLocalStorage('auth', {});
+  const authService = authServiceFactory(auth.accessToken);
 
-    // //NEW
-    // const [authService, setAuthService] = useState(authServiceFactory(auth.accessToken));
-    
-    // useEffect(() => {
-    //     setAuthService(authServiceFactory(auth.accessToken));
-    // }, [auth])
+  // //NEW
+  // const [authService, setAuthService] = useState(authServiceFactory(auth.accessToken));
 
-    // //END
-    const onRegisterSubmit = async (values) => {
-        const {confirmPassword, ...registerData} = values;
-      
-        if (confirmPassword !== registerData.password) {
-          //TODO - add error handling
-          return;
-        }
-      
-        try {
-          const result = await authService.register(registerData)
-        //   console.log('Log from registerSubmit', result);
-      
-          setAuth(result);
-          navigate('/catalog');
-        } catch (error) {
-          console.log('Error from regiser submit', error);
-        }
-      };
+  // useEffect(() => {
+  //     setAuthService(authServiceFactory(auth.accessToken));
+  // }, [auth])
 
-      //TODO - move the below functionality outside of the context
-      const onLoginSubmit = async (data) => {
-        try {
-          const result = await authService.login(data);
-          // console.log(result);
-          setAuth(result);
-          navigate('/');
-        } catch (error) {
-          console.log('Error in login');
-        }
-      };
+  // //END
+  const onRegisterSubmit = async (values) => {
+    const { confirmPassword, ...registerData } = values;
 
-      const onLogout = async () => {
-        //TODO authorize request
-        
-        await authService.logout();
-        // console.log('onLogout');
-        setAuth({});
-      }
+    if (confirmPassword !== registerData.password) {
+      //TODO - add error handling
+      return;
+    }
 
-const contextValues = {
+    try {
+      const result = await authService.register(registerData)
+      //   console.log('Log from registerSubmit', result);
+
+      setAuth(result);
+      navigate('/catalog');
+    } catch (error) {
+      console.log('Error from regiser submit', error);
+    }
+  };
+
+  //TODO - move the below functionality outside of the context
+  const onLoginSubmit = async (data) => {
+    try {
+      const result = await authService.login(data);
+      // console.log(result);
+      setAuth(result);
+      navigate('/');
+    } catch (error) {
+      console.log('Error in login');
+    }
+  };
+
+  const onLogout = async () => {
+    //TODO authorize request
+
+    await authService.logout();
+    // console.log('onLogout');
+    setAuth({});
+  }
+
+  const contextValues = {
     onLoginSubmit,
     onRegisterSubmit,
     onLogout,
@@ -70,19 +70,19 @@ const contextValues = {
     userEmail: auth.email,
     isAuthenticated: !!auth.accessToken,
   }
-  
-    return (
-        <>
-        <AuthContext.Provider value={contextValues}>
-            {children}
-        </AuthContext.Provider>
-        </>
-    );
+
+  return (
+    <>
+      <AuthContext.Provider value={contextValues}>
+        {children}
+      </AuthContext.Provider>
+    </>
+  );
 
 }
 
 export const useAuthContext = () => {
-    const context = useContext(AuthContext);
+  const context = useContext(AuthContext);
 
-    return context;
+  return context;
 }

@@ -47,7 +47,7 @@ export const PropertyDetails = () => {
         })
       })
 
-      commentService.getAll(propertyId)
+    commentService.getAll(propertyId)
       .then(res => {
         console.log("getAllComments res:", res);
         dispatch({
@@ -59,27 +59,6 @@ export const PropertyDetails = () => {
       })
 
 
-
-
-    // Promise.all([
-    //   propertyService.getOne(propertyId),
-    //   commentService.getAll(propertyId),
-    // ])
-    //   .then(([propertyData, comments]) => {
-    //     console.log('Promise all useEffect', propertyData);
-    //     console.log('Promise all useEffect', comments);
-
-    //     const propertyState = {
-    //       ...propertyData,
-    //       comments,
-    //     }
-
-    //     dispatch({
-    //       type: "PROPERTY_FETCH",
-    //       payload: propertyState,
-    //     })
-
-    // })
   }, [propertyId]);
 
   const isOwner = propertyData.property._ownerId === userId;
@@ -111,7 +90,7 @@ export const PropertyDetails = () => {
     })
 
   };
-      console.log("useReducer property state", propertyData);
+  console.log("useReducer property state", propertyData);
   return (
     <div className={styles["real-estate-details"]}>
       <h1>{propertyData.property.name}</h1>
