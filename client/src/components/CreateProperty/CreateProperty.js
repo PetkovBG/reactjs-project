@@ -25,6 +25,7 @@ export const CreateProperty = () => {
                 <input type="text" id="name" name="name"
                     value={values.name}
                     onChange={changeHandler}
+                    required
                 />
 
                 <label htmlFor="type">Type:</label>
@@ -32,6 +33,7 @@ export const CreateProperty = () => {
                     value={values.type}
                     onChange={changeHandler}
                     placeholder="Apartment, condo, house etc."
+                    required
                 />
                 {/* <select id="type" name="type">
             <option value="house">House</option>
@@ -43,29 +45,33 @@ export const CreateProperty = () => {
                 <input type="text" id="size" name="size"
                     value={values.size}
                     onChange={changeHandler}
+                    required
                 />
 
                 <label htmlFor="price">Price:</label>
                 <input type="text" id="price" name="price"
                     value={values.price}
                     onChange={changeHandler}
+                    required
                 />
 
                 <label htmlFor="location">Location:</label>
                 <input type="text" id="location" name="location"
                     value={values.location}
                     onChange={changeHandler}
+                    required
                 />
 
                 <label htmlFor="game-img">Image:</label>
                 <input value={values.imageUrl} onChange={changeHandler} type="text" id="imageUrl"
                     name="imageUrl"
-                    placeholder="Upload a photo..." />
+                    placeholder="Upload a photo..." required />
 
                 <label htmlFor="description">Description:</label>
                 <textarea id="description" name="description"
                     value={values.description}
                     onChange={changeHandler}
+                    required
                 ></textarea>
 
                 <button type="submit" className={styles.createBtn}>Create Listing</button>

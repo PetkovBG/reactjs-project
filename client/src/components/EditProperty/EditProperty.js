@@ -45,6 +45,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           value={values.name}
           onChange={changeHandler}
           className={styles.input}
+          required
         />
 
         <label htmlFor="type">Type:</label>
@@ -53,6 +54,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           onChange={changeHandler}
           placeholder="Apartment, condo, house etc."
           className={styles.input}
+          required
         />
 
         <label htmlFor="size">Square Meters:</label>
@@ -60,6 +62,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           value={values.size}
           onChange={changeHandler}
           className={styles.input}
+          required
         />
 
         <label htmlFor="price">Price:</label>
@@ -67,6 +70,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           value={values.price}
           onChange={changeHandler}
           className={styles.input}
+          required
         />
 
         <label htmlFor="location">Location:</label>
@@ -74,6 +78,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           value={values.location}
           onChange={changeHandler}
           className={styles.input}
+          required
         />
 
         <label htmlFor="imageUrl">Image:</label>
@@ -83,6 +88,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           name="imageUrl"
           placeholder="Upload a photo..."
           className={styles.input}
+          required
         />
 
         <label htmlFor="description">Description:</label>
@@ -90,6 +96,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           value={values.description}
           onChange={changeHandler}
           className={styles.textarea}
+          required
         ></textarea>
 
         <button type="submit" className={styles.btn}>Update Listing</button>
