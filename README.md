@@ -26,10 +26,10 @@ PropertyContext: For handling property data and state.
 
 ### Several custom hooks are also used:
 
-useForm: For handling form inputs and state.
-useLocalStorage: For storing data in local storage.
-useService: A utility hook for making HTTP requests.
-useValidation: For validating form inputs and handling errors.
+- useForm: For handling form inputs and state.
+- useLocalStorage: For storing data in local storage.
+- useService: A utility hook for making HTTP requests.
+- useValidation: For validating form inputs and handling errors.
 
 ### The project also includes several services:
 
