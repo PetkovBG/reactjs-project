@@ -1,9 +1,9 @@
 # reactjs-project
 
-## Project Overview
-### This is a real estate website built with React and React Router. It has the following components:
+# Project Overview
+## This is a real estate website built with React and React Router. It has the following components:
 
-### Components
+## Components
 - Home: The landing page of the website.
 - CreateProperty: A form for creating a new property listing.
 - EditProperty: A form for editing an existing property listing.
@@ -17,21 +17,21 @@
 - PropertyDetails: A page for displaying details of a specific property.
 - Register: A form for registering a new user account.
 
-#### The project uses module.css for styling the components.
+### The project uses module.css for styling the components.
 
-#### There are two contexts used in the project:
+### There are two contexts used in the project:
 
 AuthContext: For handling user authentication and authorization.
 PropertyContext: For handling property data and state.
 
-#### Several custom hooks are also used:
+### Several custom hooks are also used:
 
 useForm: For handling form inputs and state.
 useLocalStorage: For storing data in local storage.
 useService: A utility hook for making HTTP requests.
 useValidation: For validating form inputs and handling errors.
 
-#### The project also includes several services:
+### The project also includes several services:
 
 - requester: A utility service for making HTTP requests with the correct CRUD operations.
 - propertyService: A service for handling property-related requests, such as getting all properties, getting a single property, deleting a property, and editing a property.
@@ -40,7 +40,7 @@ useValidation: For validating form inputs and handling errors.
 
 
 
-#### In addition, the project includes two route guards:
+### In addition, the project includes two route guards:
 
 - RouteGuard.js: A guard for routes that require the user to be logged in.
 - PropertyOwner.js: A guard for routes that require the user to be the owner of a specific property.
