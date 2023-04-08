@@ -32,7 +32,10 @@ export const Catalog = () => {
   </div> */}
 
       {properties.length === 0 &&
-        <h3>There are no properties listed as of now. Please come back later!</h3>}
+      <div className={styles['no-properties']}>
+        <p className={styles['message-p']}>There are no properties listed as of now. Please come back later!</p>
+      </div>
+        }
 
     </section>
 

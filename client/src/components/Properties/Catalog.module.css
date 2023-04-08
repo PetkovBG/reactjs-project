@@ -1,6 +1,7 @@
 .catalog {
     background-color: #f2f2f2;
     padding: 20px;
+    height: 100%;
   }
   
   .catalog h2 {
@@ -65,3 +66,17 @@
     transform: scale(1.05); /* add a slight scaling effect on hover */
   }
   
+  .no-properties {
+    flex: 1;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100vh;
+  background-image: url('https://www.barnes-paris.com/images/visuels_articles/619_y8fHY_v.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .message-p {
+    font-size: 28px;
+  }
