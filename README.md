@@ -5,39 +5,45 @@
 
 ### Components
 - Home: The landing page of the website.
-CreateProperty: A form for creating a new property listing.
-EditProperty: A form for editing an existing property listing.
-Footer: The footer section of the website.
-Header: The header section of the website.
-Login: A form for logging in.
-Logout: A button for logging out.
-NotFound: A page for displaying 404 errors.
-Profile: A page for displaying user profiles.
-Properties: A page for displaying all property listings.
-PropertyDetails: A page for displaying details of a specific property.
-Register: A form for registering a new user account.
-There are two contexts used in the project:
+- CreateProperty: A form for creating a new property listing.
+- EditProperty: A form for editing an existing property listing.
+- Footer: The footer section of the website.
+- Header: The header section of the website.
+- Login: A form for logging in.
+- Logout: A button for logging out.
+- NotFound: A page for displaying 404 errors.
+- Profile: A page for displaying user profiles.
+- Properties: A page for displaying all property listings.
+- PropertyDetails: A page for displaying details of a specific property.
+- Register: A form for registering a new user account.
+
+#### The project uses module.css for styling the components.
+
+#### There are two contexts used in the project:
 
 AuthContext: For handling user authentication and authorization.
 PropertyContext: For handling property data and state.
-Several custom hooks are also used:
+
+#### Several custom hooks are also used:
 
 useForm: For handling form inputs and state.
 useLocalStorage: For storing data in local storage.
 useService: A utility hook for making HTTP requests.
 useValidation: For validating form inputs and handling errors.
-The project also includes several services:
 
-requester: A utility service for making HTTP requests with the correct CRUD operations.
-propertyService: A service for handling property-related requests, such as getting all properties, getting a single property, deleting a property, and editing a property.
-commentService: A service for handling comment-related requests, such as getting all comments for a property and creating a new comment.
-authService: A service for handling user authentication-related requests, such as logging in, registering a new user account, and logging out.
-The project uses module.css for styling the components.
+#### The project also includes several services:
 
-In addition, the project includes two route guards:
+- requester: A utility service for making HTTP requests with the correct CRUD operations.
+- propertyService: A service for handling property-related requests, such as getting all properties, getting a single property, deleting a property, and editing a property.
+- commentService: A service for handling comment-related requests, such as getting all comments for a property and creating a new comment.
+- authService: A service for handling user authentication-related requests, such as logging in, registering a new user account, and logging out.
 
-RouteGuard.js: A guard for routes that require the user to be logged in.
-PropertyOwner.js: A guard for routes that require the user to be the owner of a specific property.
+
+
+#### In addition, the project includes two route guards:
+
+- RouteGuard.js: A guard for routes that require the user to be logged in.
+- PropertyOwner.js: A guard for routes that require the user to be the owner of a specific property.
 
 # Getting Started with Create React App
 
