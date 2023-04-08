@@ -57,3 +57,7 @@
   .emailValidation {
     color: red;
   }
+
+  .loginError {
+    color: red;
+  }

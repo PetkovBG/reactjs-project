@@ -44,13 +44,14 @@ export const AuthProviderComponent = ({
   };
 
   //TODO - move the below functionality outside of the context
-  const onLoginSubmit = async (data) => {
+  const onLoginSubmit = async (data, onErrorSubmit) => {
     try {
       const result = await authService.login(data);
       // console.log(result);
       setAuth(result);
       navigate('/');
     } catch (error) {
+      onErrorSubmit();
       console.log('Error in login');
     }
   };
