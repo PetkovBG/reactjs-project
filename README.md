@@ -45,6 +45,9 @@ PropertyContext: For handling property data and state.
 - RouteGuard.js: A guard for routes that require the user to be logged in.
 - PropertyOwner.js: A guard for routes that require the user to be the owner of a specific property.
 
+## Conclusion
+#### Overall, the project utilizes a range of React features and custom functionality to create a robust real estate website with user authentication, property listing management, and commenting functionality.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
