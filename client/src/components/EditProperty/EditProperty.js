@@ -46,6 +46,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           onChange={changeHandler}
           className={styles.input}
           required
+          placeholder='Dream Sicily Vacation Home'
         />
 
         <label htmlFor="type">Type:</label>
@@ -62,6 +63,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           value={values.size}
           onChange={changeHandler}
           className={styles.input}
+          placeholder='175'
           required
         />
 
@@ -70,6 +72,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           value={values.price}
           onChange={changeHandler}
           className={styles.input}
+          placeholder='75000'
           required
         />
 
@@ -78,6 +81,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           value={values.location}
           onChange={changeHandler}
           className={styles.input}
+          placeholder='Sicily, Italy'
           required
         />
 
@@ -97,6 +101,7 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
           onChange={changeHandler}
           className={styles.textarea}
           required
+          placeholder='Enter description'
         ></textarea>
 
         <button type="submit" className={styles.btn}>Update Listing</button>

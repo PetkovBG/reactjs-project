@@ -26,6 +26,7 @@ export const CreateProperty = () => {
                     value={values.name}
                     onChange={changeHandler}
                     required
+                    placeholder='Dream Sicily Vacation Home'
                 />
 
                 <label htmlFor="type">Type:</label>
@@ -46,6 +47,7 @@ export const CreateProperty = () => {
                     value={values.size}
                     onChange={changeHandler}
                     required
+                    placeholder='175'
                 />
 
                 <label htmlFor="price">Price:</label>
@@ -53,6 +55,7 @@ export const CreateProperty = () => {
                     value={values.price}
                     onChange={changeHandler}
                     required
+                    placeholder='75000'
                 />
 
                 <label htmlFor="location">Location:</label>
@@ -60,6 +63,7 @@ export const CreateProperty = () => {
                     value={values.location}
                     onChange={changeHandler}
                     required
+                    placeholder='Sicily, Italy'
                 />
 
                 <label htmlFor="game-img">Image:</label>
@@ -72,6 +76,7 @@ export const CreateProperty = () => {
                     value={values.description}
                     onChange={changeHandler}
                     required
+                    placeholder='Enter description'
                 ></textarea>
 
                 <button type="submit" className={styles.createBtn}>Create Listing</button>
