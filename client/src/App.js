@@ -18,6 +18,7 @@ import { PropertyDetails } from './components/PropertyDetails/PropertyDetails';
 import { Logout } from './components/Logout/Logout';
 import { EditProperty } from './components/EditProperty/EditProperty';
 import { RouteGuard } from './common/RouteGuard';
+import { NotFound } from './components/NotFound/NotFound';
 
 function App() {
 
@@ -44,7 +45,7 @@ function App() {
               <Route element={<RouteGuard />}>
                 <Route path="/catalog/:propertyId/edit" element={<EditProperty />} />
               </Route>
-
+              <Route path='*' element={<NotFound />}></Route>
             </Routes>
           </main>
           <Footer />
