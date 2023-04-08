@@ -3,7 +3,7 @@
 ## Project Overview
 ### This is a real estate website built with React and React Router. It has the following components:
 
-Home: The landing page of the website.
+⋅⋅1. Home: The landing page of the website.
 CreateProperty: A form for creating a new property listing.
 EditProperty: A form for editing an existing property listing.
 Footer: The footer section of the website.
