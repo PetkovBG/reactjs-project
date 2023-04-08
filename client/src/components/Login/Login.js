@@ -6,13 +6,14 @@ import { useValidation } from '../../hooks/useValidation';
 
 export const Login = () => {
 
-    const { onLoginSubmit } = useAuthContext();
+    const { onLoginSubmit, } = useAuthContext();
     const { values, changeHandler, onSubmit } = useForm({
         email: '',
         password: '',
     }, onLoginSubmit);
 
     const { validateEmail, isValid, onBlurHandler } = useValidation();
+
 
     return (
         <section className={styles.login}>

@@ -4,6 +4,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 
 import { authServiceFactory } from "../services/authService";
 
+
 export const AuthContext = createContext();
 
 export const AuthProviderComponent = ({
@@ -13,6 +14,7 @@ export const AuthProviderComponent = ({
 
   const [auth, setAuth] = useLocalStorage('auth', {});
   const authService = authServiceFactory(auth.accessToken);
+
 
   // //NEW
   // const [authService, setAuthService] = useState(authServiceFactory(auth.accessToken));
@@ -54,10 +56,8 @@ export const AuthProviderComponent = ({
   };
 
   const onLogout = async () => {
-    //TODO authorize request
 
     await authService.logout();
-    // console.log('onLogout');
     setAuth({});
   }
 

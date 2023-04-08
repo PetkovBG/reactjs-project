@@ -1,6 +1,7 @@
 import styles from './Footer.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedinIn, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 
 export const Footer = () => {
@@ -9,13 +10,18 @@ return(
 
 <footer className={styles.footer}>
   <div className="container">
-    <p>Orlin Petkov Copyright © 2023</p>
     <nav>
       <ul>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms and Conditions</a></li>
+        <li><a href="#">Orlin Petkov © 2023</a></li>
         <li>
-        <button type="button" role="link"><FontAwesomeIcon icon={faLinkedinIn} /></button>
+          <Link to="https://www.facebook.com/orlin.petkov.167/">
+          <FontAwesomeIcon icon={faFacebook} />
+          </Link>
+        </li>
+        <li>
+          <Link to="https://www.linkedin.com/in/orlin-petkov-js/">
+          <FontAwesomeIcon icon={faLinkedinIn} />
+          </Link>
           </li>
       </ul>
     </nav>
