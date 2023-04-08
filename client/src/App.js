@@ -1,7 +1,7 @@
 import { Routes, Route, } from 'react-router-dom';
 
 
-import { AuthProviderComponent } from './contexts/AuthContext';
+import { AuthProviderComponent } from './contexts/authContext';
 import { PropertyProvider } from './contexts/PropertyContext';
 
 import { propertyServiceFactory } from './services/propertyService';

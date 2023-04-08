@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useParams } from 'react-router-dom'
-import { useAuthContext } from '../contexts/AuthContext'
+import { useAuthContext } from '../contexts/authContext'
 import { usePropertyContext } from '../contexts/PropertyContext'
 
 export const PropertyOwner = () => {

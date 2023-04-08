@@ -3,7 +3,7 @@ import styles from './Register.module.css';
 import { useContext } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useValidation } from '../../hooks/useValidation';
-import { AuthContext } from '../../contexts/AuthContext';
+import { AuthContext } from '../../contexts/authContext';
 
 export const Register = () => {
 
