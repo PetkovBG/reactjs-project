@@ -1,6 +1,6 @@
 import styles from './Footer.module.css'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faLinkedIn, faGitHub } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 
 export const Footer = () => {
@@ -14,11 +14,9 @@ return(
       <ul>
         <li><a href="#">Privacy Policy</a></li>
         <li><a href="#">Terms and Conditions</a></li>
-        {/* <li><button>
-          <FontAwesomeIcon icon={faLinkedIn} />
-        </button>
+        <li>
+        <button type="button" role="link"><FontAwesomeIcon icon={faLinkedinIn} /></button>
           </li>
-          <li><FontAwesomeIcon icon={faGitHub} /></li> */}
       </ul>
     </nav>
   </div>

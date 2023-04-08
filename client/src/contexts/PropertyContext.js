@@ -15,13 +15,13 @@ export const PropertyProvider = ({
 
     const propertyService = propertyServiceFactory();
 
-    // useEffect(() => {
-    //     propertyService.getAll()
-    //         .then(result => {
-    //             // console.log(result)
-    //             setProperties(result)
-    //         })
-    // }, []);
+    useEffect(() => {
+        propertyService.getAll()
+            .then(result => {
+                // console.log(result)
+                setProperties(result)
+            })
+    }, []);
 
     const getAllProperties =  () => {
          propertyService.getAll()
@@ -31,7 +31,6 @@ export const PropertyProvider = ({
         })
         .catch((err) => {
             console.log(err);
-
         }) 
     }
 
@@ -55,6 +54,7 @@ export const PropertyProvider = ({
     };
 
     const getProperty = (propertyId) => {
+        console.log(properties);
         return properties.find(x => x._id === propertyId);
     }
 

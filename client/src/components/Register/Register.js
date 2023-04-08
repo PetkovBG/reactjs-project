@@ -23,7 +23,7 @@ export const Register = () => {
         <form method="POST" onSubmit={onSubmit}>
           <h2>Register</h2>
 
-          {!isValid && <div>Email is not valid</div>}
+          {!isValid && <div className={styles.emailValidation} >Email is not valid</div>}
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" required
             value={values.email}
