@@ -48,6 +48,9 @@ PropertyContext: For handling property data and state.
 ## Conclusion
 #### Overall, the project utilizes a range of React features and custom functionality to create a robust real estate website with user authentication, property listing management, and commenting functionality.
 
+# This project utilizes a practise server that is property of SoftUni. 
+### To start the practise server simply go in the server folder and start it with `node server.js`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -63,6 +66,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
 
 ### `npm test`
 
