@@ -36,12 +36,7 @@ export const CreateProperty = () => {
                     placeholder="Apartment, condo, house etc."
                     required
                 />
-                {/* <select id="type" name="type">
-            <option value="house">House</option>
-            <option value="apartment">Apartment</option>
-            <option value="condo">Condo</option> */}
-                {/* </select> */}
-
+           
                 <label htmlFor="size">Square Meters:</label>
                 <input type="text" id="size" name="size"
                     value={values.size}

@@ -62,7 +62,6 @@ export const PropertyDetails = () => {
   }, [propertyId]);
 
   const isOwner = propertyData.property._ownerId === userId;
-
   const onDeleteClick = async () => {
 
     let result = window.confirm('Are you sure you want to delete this record?')
@@ -78,10 +77,8 @@ export const PropertyDetails = () => {
   }
 
   const onCommentSubmit = async (values) => {
-    // console.log('Comment submit', values);
     const response = await commentService.create(propertyId, values.comment);
 
-    // console.log('Response from comment submit', response);
 
     dispatch({
       type: "COMMENT_ADD",
@@ -90,7 +87,6 @@ export const PropertyDetails = () => {
     })
 
   };
-  console.log("useReducer property state", propertyData);
   return (
     <div className={styles["real-estate-details"]}>
       <h1>{propertyData.property.name}</h1>
@@ -104,9 +100,9 @@ export const PropertyDetails = () => {
 
 
       {isOwner && (
-        < div className="buttons">
-          <Link to={`/catalog/${propertyId}/edit`} className="button">Edit</Link>
-          <button className="button" onClick={onDeleteClick}>Delete</button>
+        < div className={styles.buttons}>
+          <Link to={`/catalog/${propertyId}/edit`} className={styles.button}>Edit</Link>
+          <button className={styles.button} onClick={onDeleteClick}>Delete</button>
         </div>
       )}
 

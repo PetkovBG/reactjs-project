@@ -54,7 +54,7 @@ export const PropertyProvider = ({
     };
 
     const getProperty = (propertyId) => {
-        console.log(properties);
+        console.log('here', properties);
         return properties.find(x => x._id === propertyId);
     }
 

@@ -43,15 +43,13 @@ function App() {
 
               <Route path="/catalog" element={<Catalog />} />
 
-              <Route element={<PropertyAvailability />}>
+              {/* <Route element={<PropertyAvailability />}> */}
                 <Route path="/catalog/:propertyId" element={<PropertyDetails />} />
-              </Route>
+              {/* </Route> */}
 
               <Route element={<RouteGuard />}>
                 <Route path="/catalog/:propertyId/edit" element={
-                  <PropertyOwner>
                     <EditProperty />
-                  </PropertyOwner>
                 } />
               </Route>
               <Route path="/404" element={<NotFound />} ></Route>

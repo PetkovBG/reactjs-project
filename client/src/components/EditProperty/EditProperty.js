@@ -29,10 +29,10 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
       useEffect(() => {
         propertyService.getOne(propertyId)
         .then(result => {
-          // console.log('Log from edit useEffect', result);
           changeValues(result);
         })
       }, [propertyId]);
+
 
   return (
     <section className={styles.editListing}>
