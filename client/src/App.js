@@ -20,6 +20,7 @@ import { EditProperty } from './components/EditProperty/EditProperty';
 import { RouteGuard } from './common/RouteGuard';
 import { NotFound } from './components/NotFound/NotFound';
 import { PropertyOwner } from './common/PropertyOwner';
+import { PropertyAvailability } from './common/PropertyAvailability';
 
 function App() {
 
@@ -41,7 +42,10 @@ function App() {
               </Route>
 
               <Route path="/catalog" element={<Catalog />} />
-              <Route path="/catalog/:propertyId" element={<PropertyDetails />} />
+
+              <Route element={<PropertyAvailability />}>
+                <Route path="/catalog/:propertyId" element={<PropertyDetails />} />
+              </Route>
 
               <Route element={<RouteGuard />}>
                 <Route path="/catalog/:propertyId/edit" element={
@@ -50,7 +54,7 @@ function App() {
                   </PropertyOwner>
                 } />
               </Route>
-
+              <Route path="/404" element={<NotFound />} ></Route>
               <Route path='*' element={<NotFound />}></Route>
             </Routes>
           </main>
