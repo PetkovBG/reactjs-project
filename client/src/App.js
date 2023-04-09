@@ -46,9 +46,10 @@ function App() {
 
               <Route element={<RouteGuard />}>
                 <Route path="/catalog/:propertyId/edit" element={
-                  <EditProperty />
+                    <EditProperty />
                 } />
               </Route>
+
               <Route path="/404" element={<NotFound />} ></Route>
               <Route path='*' element={<NotFound />}></Route>
             </Routes>

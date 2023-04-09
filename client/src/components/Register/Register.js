@@ -1,28 +1,35 @@
 import styles from './Register.module.css';
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useValidation } from '../../hooks/useValidation';
 import { AuthContext } from '../../contexts/authContext';
 
 export const Register = () => {
 
+  const [hasError, setHasError] = useState(false)
+
+  const onErrorSubmit = () => {
+    setHasError(true)
+  }
+
   const { onRegisterSubmit } = useContext(AuthContext);
   const { values, changeHandler, onSubmit } = useForm({
     email: '',
     password: '',
     confirmPassword: '',
-  }, onRegisterSubmit);
+  }, (values) => {
+    onRegisterSubmit(values, onErrorSubmit);
+  });
 
   const { validateEmail, isValid, onBlurHandler, } = useValidation();
-
 
   return (
     <section className={styles.register}>
       <div className={styles.container}>
         <form method="POST" onSubmit={onSubmit}>
           <h2>Register</h2>
-
+          {hasError && <div className={styles.registerError}>Password mismatch</div>}
           {!isValid && <div className={styles.emailValidation} >Email is not valid</div>}
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" required
@@ -37,13 +44,20 @@ export const Register = () => {
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password"
             value={values.password}
-            onChange={changeHandler}
+            onChange={(e) => {
+              changeHandler(e);
+              setHasError(false);
+            }}
+            
             required />
 
           <label htmlFor="confirm-password">Confirm Password:</label>
           <input type="password" id="confirm-password" name="confirmPassword"
             value={values.confirmPassword}
-            onChange={changeHandler}
+            onChange={(e) => {
+              changeHandler(e);
+              setHasError(false);
+            }}
             required />
 
           <button type="submit">Register</button>

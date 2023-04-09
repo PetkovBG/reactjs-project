@@ -15,19 +15,20 @@ export const AuthProviderComponent = ({
   const [auth, setAuth] = useLocalStorage('auth', {});
   const authService = authServiceFactory(auth.accessToken);
 
-  const onRegisterSubmit = async (values) => {
+  const onRegisterSubmit = async (values, onErrorSubmit) => {
     const { confirmPassword, ...registerData } = values;
 
     if (confirmPassword !== registerData.password) {
+      onErrorSubmit();
       return;
     }
 
     try {
       const result = await authService.register(registerData)
-
       setAuth(result);
       navigate('/catalog');
     } catch (error) {
+      onErrorSubmit();
       console.log('Error from regiser submit', error);
     }
   };

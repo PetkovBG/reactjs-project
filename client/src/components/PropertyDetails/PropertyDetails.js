@@ -5,8 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { propertyServiceFactory } from '../../services/propertyService';
 import { useService } from '../../hooks/useService';
 
-import { AuthContext, useAuthContext } from '../../contexts/authContext';
-import { useContext } from 'react';
+import { useAuthContext } from '../../contexts/authContext';
 
 import * as commentService from '../../services/commentService';
 
