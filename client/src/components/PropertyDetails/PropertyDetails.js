@@ -38,7 +38,6 @@ export const PropertyDetails = () => {
 
     propertyService.getOne(propertyId)
       .then(res => {
-        console.log("getOne res:", res);
         dispatch({
           type: "PROPERTY_FETCH",
           payload: {
@@ -49,7 +48,6 @@ export const PropertyDetails = () => {
 
     commentService.getAll(propertyId)
       .then(res => {
-        console.log("getAllComments res:", res);
         dispatch({
           type: "COMMENTS_FETCH",
           payload: {

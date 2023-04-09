@@ -18,7 +18,6 @@ export const PropertyProvider = ({
     useEffect(() => {
         propertyService.getAll()
             .then(result => {
-                // console.log(result)
                 setProperties(result)
             })
     }, []);
@@ -26,7 +25,6 @@ export const PropertyProvider = ({
     const getAllProperties =  () => {
          propertyService.getAll()
         .then(result => {
-            console.log(result);
             setProperties(result);
         })
         .catch((err) => {
@@ -38,9 +36,6 @@ export const PropertyProvider = ({
     const onCreateSubmit = async (data) => {
         const newProperty = await propertyService.create(data);
 
-        // console.log('New prop');
-        // console.log(newProperty);
-
         setProperties(state => [...state, newProperty]);
 
         navigate('/catalog');
@@ -48,13 +43,11 @@ export const PropertyProvider = ({
 
     const onPropertyEditSubmit = async (values) => {
         const result = await propertyService.edit(values._id, values);
-        console.log('Property Edit', result);
         setProperties(state => state.map(x => x._id === values._id ? result : x));
         navigate(`/catalog/${values._id}`);
     };
 
     const getProperty = (propertyId) => {
-        console.log('here', properties);
         return properties.find(x => x._id === propertyId);
     }
 

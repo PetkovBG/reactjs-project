@@ -13,8 +13,7 @@ export const propertyReducer = (state, action) => {
                 comments: action.payload.comments,
             }
         case "COMMENT_ADD":
-            console.log('Add comment');
-            console.log('State is:', state);
+        
             return {
                 ...state,
                 comments: [

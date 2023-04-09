@@ -2,6 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #aaa9a9;
 }
 
 h1 {
@@ -85,11 +86,10 @@ button[type="submit"]:hover {
   background-color: #2980b9;
 }
 
-/* New styles */
 img {
-  max-width: 400px; /* limit image width */
-  margin-bottom: 20px; /* add margin below image */
-  display: block; /* make sure image is centered */
+  max-width: 400px; 
+  margin-bottom: 20px; 
+  display: block; 
 }
 
 .buttons a {

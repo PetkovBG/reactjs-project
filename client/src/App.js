@@ -42,14 +42,11 @@ function App() {
               </Route>
 
               <Route path="/catalog" element={<Catalog />} />
-
-              {/* <Route element={<PropertyAvailability />}> */}
-                <Route path="/catalog/:propertyId" element={<PropertyDetails />} />
-              {/* </Route> */}
+              <Route path="/catalog/:propertyId" element={<PropertyDetails />} />
 
               <Route element={<RouteGuard />}>
                 <Route path="/catalog/:propertyId/edit" element={
-                    <EditProperty />
+                  <EditProperty />
                 } />
               </Route>
               <Route path="/404" element={<NotFound />} ></Route>

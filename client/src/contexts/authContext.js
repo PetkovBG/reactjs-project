@@ -15,26 +15,15 @@ export const AuthProviderComponent = ({
   const [auth, setAuth] = useLocalStorage('auth', {});
   const authService = authServiceFactory(auth.accessToken);
 
-
-  // //NEW
-  // const [authService, setAuthService] = useState(authServiceFactory(auth.accessToken));
-
-  // useEffect(() => {
-  //     setAuthService(authServiceFactory(auth.accessToken));
-  // }, [auth])
-
-  // //END
   const onRegisterSubmit = async (values) => {
     const { confirmPassword, ...registerData } = values;
 
     if (confirmPassword !== registerData.password) {
-      //TODO - add error handling
       return;
     }
 
     try {
       const result = await authService.register(registerData)
-      //   console.log('Log from registerSubmit', result);
 
       setAuth(result);
       navigate('/catalog');
@@ -43,11 +32,9 @@ export const AuthProviderComponent = ({
     }
   };
 
-  //TODO - move the below functionality outside of the context
   const onLoginSubmit = async (data, onErrorSubmit) => {
     try {
       const result = await authService.login(data);
-      // console.log(result);
       setAuth(result);
       navigate('/');
     } catch (error) {

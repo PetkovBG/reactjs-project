@@ -16,7 +16,6 @@ export const useValidation = () => {
 
     const onBlurHandler = (email) => {
         setIsActivated(true);
-        // validateEmail(email);
         setIsValid(regex.test(email));
     }
 

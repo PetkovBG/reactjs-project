@@ -14,8 +14,6 @@ export const useForm = (initialValues, onSubmitHandler) => {
     };
 
     const changeValues = (newValues) => {
-        //TODO - check if new values are the same as old values, validation
-        // console.log('Log from new Values', newValues);
         setValues(newValues);
     }
     

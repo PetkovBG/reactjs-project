@@ -25,8 +25,7 @@ export const propertyServiceFactory = (token) => {
 
     const create = async (propertyData) => {
         const result = await request.post(baseUrl, propertyData);
-        // console.log('Log from create');
-        // console.log(result);
+
         return result;
     };
 
@@ -34,7 +33,7 @@ export const propertyServiceFactory = (token) => {
         const result = request.delete(`${baseUrl}/${propertyId}`);
     };
 
-    const edit = async (propertyId, data) => request.put(`${baseUrl}/${propertyId}`, data); 
+    const edit = async (propertyId, data) => request.put(`${baseUrl}/${propertyId}`, data);
 
     return {
         getAll,
