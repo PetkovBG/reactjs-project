@@ -46,7 +46,9 @@ function App() {
 
               <Route element={<RouteGuard />}>
                 <Route path="/catalog/:propertyId/edit" element={
+                  <PropertyOwner>
                     <EditProperty />
+                     </PropertyOwner>
                 } />
               </Route>
 

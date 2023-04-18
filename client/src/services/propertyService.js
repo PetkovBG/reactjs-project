@@ -5,6 +5,8 @@ const baseUrl = 'http://localhost:3030/data/properties';
 
 export const propertyServiceFactory = (token) => {
 
+    // console.log('This is the token', token);
+
     const request = requestFactory(token);
 
     const getAll = async () => {

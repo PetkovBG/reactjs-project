@@ -7,38 +7,38 @@ import { useForm } from '../../hooks/useForm';
 import { propertyServiceFactory } from '../../services/propertyService';
 import { usePropertyContext } from '../../contexts/PropertyContext';
 
-    export const EditProperty = () => {
+export const EditProperty = () => {
 
-      const { onPropertyEditSubmit } = usePropertyContext();
+  const { onPropertyEditSubmit } = usePropertyContext();
 
-      const {propertyId} = useParams();
+  const { propertyId } = useParams();
 
-      const propertyService = useService(propertyServiceFactory);
+  const propertyService = useService(propertyServiceFactory);
 
-      const { values, changeHandler, onSubmit, changeValues } = useForm({
-        _id: '',
-        name: '',
-        type: '',
-        size: '',
-        price: '',
-        location: '',
-        imageUrl: '',
-        description: '',
-      }, onPropertyEditSubmit);
+  const { values, changeHandler, onSubmit, changeValues } = useForm({
+    _id: '',
+    name: '',
+    type: '',
+    size: '',
+    price: '',
+    location: '',
+    imageUrl: '',
+    description: '',
+  }, onPropertyEditSubmit);
 
-      useEffect(() => {
-        propertyService.getOne(propertyId)
-        .then(result => {
-          changeValues(result);
-        })
-      }, [propertyId]);
+  useEffect(() => {
+    propertyService.getOne(propertyId)
+      .then(result => {
+        changeValues(result);
+      })
+  }, [propertyId]);
 
 
   return (
     <section className={styles.editListing}>
       <h2>Edit Real Estate Listing</h2>
-      <form method="POST" 
-      onSubmit={onSubmit}
+      <form method="POST"
+        onSubmit={onSubmit}
       >
         <label htmlFor="name">Name:</label>
         <input type="text" id="name" name="name"
@@ -86,9 +86,9 @@ import { usePropertyContext } from '../../contexts/PropertyContext';
         />
 
         <label htmlFor="imageUrl">Image:</label>
-        <input 
-        value={values.imageUrl} onChange={changeHandler}
-         type="text" id="imageUrl"
+        <input
+          value={values.imageUrl} onChange={changeHandler}
+          type="text" id="imageUrl"
           name="imageUrl"
           placeholder="Upload a photo..."
           className={styles.input}
